@@ -97,7 +97,7 @@ window.addEventListener('load', function() {
         moveSnake();
         drawSnake();
         if (!checkGameOver()) {
-            setTimeout(gameLoop, 150);
+            setTimeout(gameLoop, 300);
         } else {
             showGameOverModal();
         }
