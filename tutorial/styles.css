@@ -1,0 +1,82 @@
+/* Import the fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:wght@400;700&display=swap');
+
+/* General body and layout adjustments */
+body {
+    font-family: 'Roboto Mono', monospace;
+    background-color: #0d0d0d; /* Dark background for a retro feel */
+    color: #00ff00; /* Default bright green text */
+    line-height: 1.6;
+}
+
+h1 {
+    font-family: 'Press Start 2P', monospace;
+    color: #ff0000; /* Red for main titles */
+    margin-top: 0;
+    padding-top: 20px;
+}
+
+h2 {
+    font-family: 'Press Start 2P', monospace;
+    color: #0080ff; /* Blue for secondary headers */
+}
+
+h3 {
+    font-family: 'Press Start 2P', monospace;
+    color: #ffbf00; /* Yellow for tertiary headers */
+}
+
+a {
+    color: #00ff00; /* Make links stand out in the same green */
+}
+
+a:hover {
+    color: #ffffff; /* White for hovered links */
+}
+
+/* Styling adjustments for the script notebook cells */
+script[type="text/notebook-cell"] {
+    background-color: #202020; /* Dark grey background */
+    color: #00ff00; /* Bright green text for contrast */
+    padding: 15px;
+    border: 1px dashed #00ff00;
+    display: block;
+    margin: 10px 0;
+    white-space: pre-wrap; /* Maintain formatting of the code */
+    word-wrap: break-word;
+}
+
+/* Remove "Run" button from blog-cells snippets */
+blog-cell {
+    display: none; /* This will hide the "Run" button */
+}
+
+button {
+    background-color: #333333;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Roboto Mono', monospace;
+}
+
+button:hover {
+    background-color: #262626;
+    color: #ffffff;
+}
+
+img {
+    display: block;
+    margin-top: .5rem;
+    width: 15rem;
+}
+
+#gameInfo {
+    background-color: #1a1a1a; /* Darker background for game info */
+    border: 1px solid #00ff00;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Import blog-cells CSS files via CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/blog-cells@0.7.1/dist/blog-cells.css" />
+    <link rel="stylesheet" href="styles.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>snake game tutorial</title>
+</head>
+<body>
+    <h1>how to make a snake game</h1>
+    <h2>get yourself setup for some coding</h2>
+    before we can code, we need an editor. we suggest visual studio code.
+    download <a href="https://code.visualstudio.com/Download" target="_blank">here</a>. make yourself acquainted with this great tool by reading their manuals. you can find some good youtube tutorials, too. don't be afraid, the first steps look steeper than they are really...
+    been there, done that, but I'm still waiting for my t-shirt 😭 
+    <h2>file structure</h2>
+    'ight! so you are of the heard-headed type, huh? great you're still around. now, make this file structure in your VSC:
+    <img src="./images/file_structure.png"> 
+    <h2>setting up the game area</h2>
+    in your index.html, you'll now set up the canvas. this is the area your snake will be able to navigate. for this example we'll go for a 400 by 400 pixels, but you can go for any size of your liking (maybe a good idea to keep your user in mind at this stage. not everybody is lucky to have a gi-gan-tic super-sized screen sitting on their desks).
+    copy this code into your index.html file:
+    <script type="text/notebook-cell">
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Snake Game</title>
+            <link rel="stylesheet" href="styles.css">
+        </head>
+        <body>
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
+            <script src="script.js"></script>
+        </body>
+        </html>        
+    </script>
+    <h2>add some styling</h2>
+    next up, copy this code to add some styling to your web page:
+    <script type="text/notebook-cell">
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+    }
+    canvas {
+        background-color: #000;
+    }
+    </script> 
+    now it's time to have a look at how our canvas actually renders in the browser. first, you'll need to install a 'live server' plugin in VSC ; if you don't know where to find that plugin, google 'live server for VSC' on the net - you'll find it. it's dead easy...   
+    all good?
+    great stuff, now you should see a black square on your browser screen.
+    now off to the exciting part: 
+    <h2>add your snake!</h2>
+    from now on, we'll be working in our js file. let's start by making sure our app loads when the page is loaded. to do so, add this to your js file:
+    <script type="text/notebook-cell">
+        window.addEventListener('load', function() {
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.setAttribute('tabindex', '0');
+        canvas.focus();
+
+        canvas.addEventListener('click', function() {
+            canvas.focus();
+    });
+            /*add future code here*/
+});
+    </script>
+    nice one. from now on, we will be writing everything inside the parentheses you see there where it says "add future code here" (you can leave the phrase, it's a comment and won't be executed). we'll start by adding our snake:
+    <script type="text/notebook-cell">
+    const gridSize = 20;
+    let snake = [{ x: 160, y: 160 }, { x: 140, y: 160 }, { x: 120, y: 160 }];
+    let dx = gridSize; // moving right
+    let dy = 0;
+    let food = { x: 80, y: 80 };
+
+    function drawSnakePart(snakePart) {
+        ctx.fillStyle = 'green';
+        ctx.fillRect(snakePart.x, snakePart.y, gridSize, gridSize);
+    }
+
+    function drawSnake() {
+        snake.forEach(drawSnakePart);
+    }
+    </script>
+    <h2>move the snake</h2>
+    this is the part where we make the snake grow, and where you navigate the poor hungry animal towards its food. add this code:
+    <script type="text/notebook-cell">
+    function moveSnake() {
+        const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+        snake.unshift(head);
+        if (head.x === food.x && head.y === food.y) {
+            placeFood();
+        } else {
+            snake.pop();
+        }
+    }
+
+    function changeDirection(event) {
+        event.preventDefault();
+        const keyPressed = event.keyCode;
+        const LEFT_KEY = 37;
+        const RIGHT_KEY = 39;
+        const UP_KEY = 38;
+        const DOWN_KEY = 40;
+        const goingUp = dy === -gridSize;
+        const goingDown = dy === gridSize;
+        const goingRight = dx === gridSize;
+        const goingLeft = dx === -gridSize;
+
+        if (keyPressed === LEFT_KEY && !goingRight) {
+            dx = -gridSize;
+            dy = 0;
+        } else if (keyPressed === UP_KEY && !goingDown) {
+            dy = -gridSize;
+            dx = 0;
+        } else if (keyPressed === RIGHT_KEY && !goingLeft) {
+            dx = gridSize;
+            dy = 0;
+        } else if (keyPressed === DOWN_KEY && !goingUp) {
+            dy = gridSize;
+            dx = 0;
+        }
+    }
+    </script>
+    <h2>add the food</h2>
+    <script type="text/notebook-cell">
+    function randomFood(min, max) {
+        return Math.round((Math.random() * (max - min) + min) / gridSize) * gridSize;
+    }
+
+    function placeFood() {
+        food = {
+            x: randomFood(0, canvas.width - gridSize),
+            y: randomFood(0, canvas.height - gridSize)
+        };
+    }
+
+    function drawFood() {
+        ctx.fillStyle = 'red';
+        ctx.fillRect(food.x, food.y, gridSize, gridSize);
+    }
+    </script>
+    <h2>start with a clean slate</h2>
+    we want every session (when loading the page) to start with a clean canvas. in order to do so, we add this underneath our existing code (still between our infamous parentheses!)
+    <script type="text/notebook-cell">
+    function clearCanvas() {
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    </script>
+    <h2>trigger the functions in our app</h2>
+    incredible. the actual game is now ready. all's we need now, is to make sure our app triggers the right functions in the right order. do so by adding this to your js:
+    <script type="text/notebook-cell">
+    function gameLoop() {
+        clearCanvas();
+        drawFood();
+        moveSnake();
+        drawSnake();
+        setTimeout(gameLoop, 150);
+    }
+
+    document.addEventListener('keydown', changeDirection);
+    placeFood();
+    gameLoop();
+    </script>
+    <h2>optional</h2>
+    and that's a wrap!
+    now go out and waste your precious time controlling your snake. If you want to adjust the speed of the game, change the "150" which you find at the very bottom of your javascript code, in the setTimeout method. the higher the number, the slower the game.
+    <h3>keep score</h3>
+    you could keep score
+    <script type="text/notebook-cell">
+    let score = 0;
+
+    function checkFoodCollision() {
+        const head = snake[0];
+        if (head.x === food.x && head.y === food.y) {
+            score += 10;
+            placeFood();
+            document.getElementById('score').innerText = `Score: ${score}`;
+        } else {
+            snake.pop();
+        }
+    }
+    </script>
+    ... but you'd need to trigger that function as well ...
+    this could be your scoreboard:
+    <script type="text/notebook-cell">
+        <p id="score">Score: 0</p>
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+    </script>
+    <h3>restart button</h3>
+    you could also add a restart button like so:
+    <script type="text/notebook-cell">
+        <button onclick="startGame()">Restart Game</button>
+    </script>
+    ... with this being a possible way to start the game:
+    <script type="text/notebook-cell">
+        function startGame() {
+            snake = [{ x: 160, y: 160 }, { x: 140, y: 160 }];
+            dx = 20;
+            dy = 0;
+            score = 0;
+            placeFood();
+            document.getElementById('score').innerText = `Score: ${score}`;
+            gameLoop();
+        }
+    </script>
+    With the options included, you could then complete your game loop which ties everything together (replacing the gameloop version mentioned higher up in this tutorial):
+    <script type="text/notebook-cell">
+        function gameLoop() {
+            if (checkGameOver()) {
+                alert("Game over!");
+                return;
+            }
+            setTimeout(() => {
+                clearCanvas();
+                drawFood();
+                moveSnake();
+                drawSnake();
+                gameLoop();
+            }, 100);
+        }
+        
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+        
+        startGame(); // Initializes the game
+    </script>
+    I do hope you liked this tutorial!
+    peace out 🖖
+    <!-- Import blog-cells JS files via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/blog-cells@0.7.1/dist/blog-cells.js"></script>
+</body>
+</html>

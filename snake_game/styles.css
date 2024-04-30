@@ -1,0 +1,72 @@
+/* Import the Google Font for that retro, pixelated game look */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #0d0d0d; /* Dark background for a more retro feel */
+    font-family: 'Press Start 2P', monospace; /* Retro pixelated font throughout the body */
+    color: #00ff00; /* Bright green text, reminiscent of old monochrome monitors */
+}
+
+canvas {
+    background-color: #000;
+    border: 1px solid #00ff00; /* Bright green border to highlight the game area */
+}
+
+#gameInfo {
+    background-color: #262626; /* Dark gray for the info box */
+    padding: 0.5rem;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+button {
+    background-color: #262626; /* Dark gray button */
+    color: #00ff00; /* Bright green text for contrast */
+    border: 1px solid #00ff00; /* Matching border for consistency */
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', monospace; /* Ensure font consistency */
+    outline: none;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+button:hover {
+    background-color: #0f0f0f; /* Slightly lighter gray when hovered */
+}
+
+p {
+    font-family: 'Press Start 2P', monospace; /* Retro font for the score display */
+    color: #00ff00; /* Keeping the bright green color scheme */
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0,0.4); /* Black background with opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #262626;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #00ff00;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    font-family: 'Press Start 2P', monospace;
+    color: #00ff00;
+}
