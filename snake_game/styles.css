@@ -70,3 +70,10 @@ p {
     font-family: 'Press Start 2P', monospace;
     color: #00ff00;
 }
+
+#randomMessage {
+    color: #00ff00; /* Green text to match the retro theme */
+    font-family: 'Roboto Mono', monospace; /* Monospaced font for better readability */
+    margin-top: 20px; /* Space above the message */
+    text-align: center; /* Centering the text */
+}

@@ -7,6 +7,33 @@ window.addEventListener('load', function() {
     let dy;
     let food;
     let score;
+    // Start with the hardcoded message
+    let messages = ["when launching the game, and as you progress, lines of programming wisdom will appear here"];
+    document.getElementById('randomMessage').textContent = messages[0]; // Display the initial hardcoded message
+
+    fetchMessages(); // Fetch additional messages
+
+    function fetchMessages() {
+        return fetch('messages.json')
+            .then(response => response.json())
+            .then(data => {
+                messages = data.strings; // Store fetched messages
+            })
+            .catch(error => {
+                console.error('Error fetching messages:', error);
+                messages = ["we couldn't load our messages on programming wisdom :-/"];
+            });
+    }
+
+    function displayRandomMessage() {
+        if (messages.length > 0) {
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            const message = messages[randomIndex];
+            document.getElementById('randomMessage').textContent = message;
+        } else {
+            document.getElementById('randomMessage').textContent = "No messages available";
+        }
+    }
 
     function initializeGame() {
         snake = [{ x: 160, y: 160 }, { x: 140, y: 160 }, { x: 120, y: 160 }];
@@ -14,12 +41,13 @@ window.addEventListener('load', function() {
         dy = 0; // not moving vertically
         food = { x: 80, y: 80 }; // initial food placement
         score = 0; // initial score
-        placeFood(); // Make sure this is called to place the food initially
+        placeFood();
         document.getElementById('score').textContent = 'Score: ' + score;
         document.getElementById('gameOverModal').style.display = 'none'; // Hide game over modal on start
     }
 
     window.startGame = function() {
+        displayRandomMessage(); // Display a new message when the game starts
         initializeGame();
         gameLoop();
     };
@@ -40,6 +68,7 @@ window.addEventListener('load', function() {
             score += 10;
             document.getElementById('score').textContent = 'Score: ' + score;
             placeFood();
+            displayRandomMessage(); // Display a new message when food is eaten
         } else {
             snake.pop();
         }
@@ -127,6 +156,4 @@ window.addEventListener('load', function() {
     function randomFood(min, max) {
         return Math.round((Math.random() * (max - min) + min) / gridSize) * gridSize;
     }
-
-    initializeGame();
 });

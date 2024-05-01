@@ -1,0 +1,20 @@
+{
+    "strings": [
+        "As you progress in the game, new lines of programming wisdom will show here",
+        "Joris is a great guy but not the best at coding",
+        "HTML is not a programming language",
+        "The best way to learn programming is to do it",
+        "HTML is a markup language ; it places elements like images or text on a page",
+        "CSS is a styling language ; it makes the elements on a page look good",
+        "JavaScript is a programming language ; it makes the page interactive",
+        "This snake game is made with JavaScript, styled with CSS and placed on the page with HTML",
+        "The first programming language was created in 1957 by John Backus",
+        "The first programming language was called Fortran",
+        "The first programming language was created for IBM",
+        "The first programmer was Ada Lovelace, she wrote the first algorithm. She was the daughter of the British poet Lord Byron",
+        "The first computer weighed 27 tons and was 2.4 meters high",
+        "The first computer was called ENIAC",
+        "You are now working with a computer that is 1000 times smaller and 1000 times faster than the first computer thanks to the principle of Moore's Law",
+        "Moore's Law states that the number of transistors on a microchip doubles every two years"
+    ]
+}
