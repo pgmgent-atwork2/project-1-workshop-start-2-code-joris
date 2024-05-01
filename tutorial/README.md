@@ -16,6 +16,6 @@ As you progress in the game, you'll also see random lines of coding wisdom, so y
 
 You can find a link to our [figjam](https://www.figma.com/file/sk6eKvbMgszTR92wo2M7jF/snake-game-project?type=whiteboard&node-id=0%3A1&t=IFoVkDXFUqPiFgIg-1 "snake game figjam") here.<br>
 
-[Photo by IslandHopper X from Pexels](https://images.app.goo.gl/Cy7k6gKsxKPfq9Za9 "snake picture")<br>
+![Photo by IslandHopper X from Pexels](https://img.tapimg.net/market/images/a379b23b17cf12480fe48e2dea63b4d2.jpg/appicon "snake picture")<br>
 
 #### Team Joris 
