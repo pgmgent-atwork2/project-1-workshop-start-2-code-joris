@@ -15,6 +15,17 @@
         "The first computer weighed 27 tons and was 2.4 meters high",
         "The first computer was called ENIAC",
         "You are now working with a computer that is 1000 times smaller and 1000 times faster than the first computer thanks to the principle of Moore's Law",
-        "Moore's Law states that the number of transistors on a microchip doubles every two years"
+        "Moore's Law states that the number of transistors on a microchip doubles every two years",
+        "Json is a data format we use to display these wisdom messages. JSON is easy for humans to read and write and easy for machines to process",
+        "The first computer bug was an actual bug. A moth was stuck in a relay of the Harvard Mark II computer",
+        "The first computer bug was found by Grace Hopper",
+        "If we would want to store all the data in the world on paper, we would need 10 billion trees",
+        "The first computer mouse was made of wood",
+        "The first computer mouse was invented by Douglas Engelbart",
+        "The first computer mouse was called the X-Y Position Indicator for a Display System. X and Y is very much the basis for our snake game here",
+        "The first computer mouse had only one button",
+        "The first computer mouse was invented in 1964",
+        "If we would want to store the score of this game, we would need a database",
+        "These are common databases: MySQL, PostgreSQL, MongoDB, Redis, SQLite, Oracle, Microsoft SQL Server"
     ]
 }
