@@ -15,7 +15,7 @@
     now, we simplified things a bit, so you don't start thinking I am an alien talking alien to you (which I might still very well be 👽). so, you will see some differences between the end result and the code I'm sharing in my github repo. the differences are marginal and won't affect the functioning of the game:
     <ul>
         <li>
-            I changed the way the browser returns the "game over" message so that it sits better with the general styling of the game. In technical terms I don't us your system message, but a "modal" which offers more control (styling, positioning, ...)
+            I changed the way the browser returns the "game over" message so that it sits better with the general styling of the game. In technical terms I don't use your system message, but a "modal" which offers more control (styling, positioning, ...)
         </li>
         <li>
             I added a "start game" button
@@ -43,10 +43,24 @@
     download <a href="https://code.visualstudio.com/Download" target="_blank">here</a>. make yourself acquainted with this great tool by reading their manuals. you can find some good youtube tutorials, too. don't be afraid, the first steps look steeper than they are really...
     been there, done that, but I'm still waiting for my t-shirt 😭 
     <h2>file structure</h2>
-    'ight! so you are of the heard-headed type, huh? great you're still around. now, make this file structure in your VSC:
+    aight! so you are of the heard-headed type, huh? great you're still around. now, make this file structure in your VSC:
     <img src="./images/file_structure.png"> 
     <h2>setting up the game area</h2>
-    in your index.html, you'll now set up the canvas. this is the area your snake will be able to navigate. for this example we'll go for a 400 by 400 pixels, but you can go for any size of your liking (maybe a good idea to keep your user in mind at this stage. not everybody is lucky to have a gi-gan-tic super-sized screen sitting on their desks).
+    in your index.html, you'll now set up the canvas. this is the area your snake will be able to navigate. for this example we'll go for a 400 by 400 pixels, but you can go for any size of your liking. There are a few things to consider though: 
+    <ul>
+        <li>
+            the canvas should be square
+        </li>
+        <li>
+            the canvas should not be too big, because then you'll have to scroll up and down to see the whole canvas - and that's not fun at all
+        </li>
+        <li>
+            the canvas should be big enough to be able to see the snake and the food
+        </li>
+        <li>
+            the smaller your canvas, the harder the game will be
+        </li>
+    </ul>
     copy this code into your index.html file:
     <script type="text/notebook-cell">
         <!DOCTYPE html>
@@ -96,7 +110,7 @@
             /*add future code here*/
 });
     </script>
-    nice one. from now on, we will be writing everything inside the parentheses you see there where it says "add future code here" (you can leave the phrase, it's a comment and won't be executed). we'll start by adding our snake:
+    nice one. from now on, we will be writing everything inside the parentheses you see there where it says "add future code here" (you can leave the phrase, it's a comment and won't be executed). basically, we will be adding functions inside this one wrapper function we just created. these functions we are about to create will do things like "add the snake", "add the food", "move the snake", "show an alert", etc... we'll start by adding our snake to the canvas. copy this code into your js file:
     <script type="text/notebook-cell">
     const gridSize = 20;
     let snake = [{ x: 160, y: 160 }, { x: 140, y: 160 }, { x: 120, y: 160 }];
